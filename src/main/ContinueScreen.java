@@ -49,9 +49,8 @@ public class ContinueScreen {
 		bEnd.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
 				
-				//Send score to BDD
-				
-				gp.gameState="titleScreen";
+				//Send score to BDD				
+				gp.gameState="endScreen";
 				bEnd.hovered = false;
 			}		
 		});

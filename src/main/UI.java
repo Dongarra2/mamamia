@@ -7,10 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import entity.GreenPotion;
 import entity.Player;
-import entity.PurplePotion;
-import entity.RedPotion;
 
 public class UI {
 	
@@ -124,29 +121,29 @@ public class UI {
 		
 		//potion sprites and amounts
 			if(player.redPotCount>0) {
-				g2.drawImage(RedPotion.redPotion,item3PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.redPot.redPotion,item3PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion3 : x"+player.redPotCount, item3PosX, potionTextPosY);
 			}
 			else {
-				g2.drawImage(RedPotion.redPotion2,item3PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.redPot.redPotion2,item3PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion3", item3PosX, potionTextPosY);
 			}
 		
 			if(player.greenPotCount>0) {
-				g2.drawImage(GreenPotion.greenPotion,item2PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.greenPot.greenPotion,item2PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion2 : x"+player.greenPotCount, item2PosX, potionTextPosY);
 			}
 			else {
-				g2.drawImage(GreenPotion.greenPotion2,item2PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.greenPot.greenPotion2,item2PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion2", item2PosX, potionTextPosY);
 			}
 		
 			if(player.purplePotCount>0) {
-				g2.drawImage(PurplePotion.purplePotion,item1PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.purplePot.purplePotion,item1PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion1 : x"+player.purplePotCount, item1PosX, potionTextPosY);
 			}
 			else {
-				g2.drawImage(PurplePotion.purplePotion2,item1PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawImage(gp.purplePot.purplePotion2,item1PosX,potionPosY,itemWidth,itemHeight,null);
 				g2.drawString("Potion1", item1PosX, potionTextPosY);
 			}
 
@@ -170,11 +167,12 @@ public class UI {
 			
 		
 			if(gp.gameState=="dead") {
-				gp.eScreen.drawEndScreen(g2);
+				gp.dScreen.drawDeadScreen(g2);
 			}
 			if(gp.gameState=="continue") {
 				gp.cScreen.drawContinueScreen(g2);
 			}
+			
 		
 		/////////
 		
@@ -198,12 +196,27 @@ public class UI {
 		
 		
 		
-		//////TITLE SCREEN DISPLAY///////
+		//////SCREENS DISPLAY///////
 		
 		if(gp.gameState=="titleScreen") {
 			gp.removeAll();
 			gp.tScreen.drawTitleScreen(g2);
 		}
+		
+		if(gp.gameState=="classScreen") {
+			gp.removeAll();
+			gp.classScreen.drawClassScreen(g2);
+		}
+		
+		if(gp.gameState=="nameScreen") {
+			gp.removeAll();
+			gp.nScreen.drawNameScreen(g2);
+		}
+		if(gp.gameState=="endScreen") {
+			gp.removeAll();
+			gp.eScreen.drawEndScreen(g2);
+		}
+		
 		
 		//////INFO SCREEN DISPLAY
 		
@@ -212,8 +225,5 @@ public class UI {
 			gp.removeAll();
 			gp.iScreen.drawInfoScreen(g2);
 		}
-		
-		g2.dispose();
-
 	}
 }

@@ -5,7 +5,8 @@ import main.GamePanel;
 
 public class GreenPotion extends Entity{
 	
-	public static BufferedImage greenPotion,greenPotion2;
+	public BufferedImage greenPotion;
+	public BufferedImage greenPotion2;
 	Player player;
 	
 	

@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class EndScreen {
 		try {
 			menuButton = ImageIO.read(getClass().getResourceAsStream("/endScreen/menuButton.png"));
 			menuButtonHover = ImageIO.read(getClass().getResourceAsStream("/endScreen/menuButtonHover.png"));
-			screen = ImageIO.read(getClass().getResourceAsStream("/endScreen/screen.png"));
+			screen = ImageIO.read(getClass().getResourceAsStream("/endScreen/endScreen.png"));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -33,7 +34,7 @@ public class EndScreen {
 		}
 		
 		
-		bMenu = new MenuButton(gp.tileSize*6, gp.tileSize*5, gp.tileSize*4, gp.tileSize);		
+		bMenu = new MenuButton(gp.tileSize*6, gp.tileSize*7, gp.tileSize*4, gp.tileSize);		
 		bMenu.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
 				gp.gameState="titleScreen";
@@ -47,7 +48,9 @@ public class EndScreen {
 		
 		g2.drawImage(screen, 0,0,gp.screenWidth,gp.screenHeight,null);
 		g2.setFont(arial_60);
-		g2.drawString("score : "+gp.player.score, 13*gp.tileSize/2, gp.tileSize*8);
+		g2.setColor(Color.white);
+		g2.drawString(gp.player.name,6*gp.tileSize, gp.tileSize*5);
+		g2.drawString(gp.player.score+" points",6*gp.tileSize, gp.tileSize*6);
 		
 		if(bMenu.hovered==false) {
 			g2.drawImage(menuButton, bMenu.posX, bMenu.posY, bMenu.width, bMenu.height, null);

@@ -61,11 +61,11 @@ public class Player extends Entity{
 		
 		name = "default";
 		
-		maxHP=50;
-		HP=maxHP;
-		minDamage=2;
-		maxDamage=5;
-		shield=0;
+//		maxHP=50;
+//		HP=maxHP;
+//		minDamage=2;
+//		maxDamage=5;
+//		shield=0;
 	}
 	
 	public void getPlayerImage() {
@@ -214,8 +214,21 @@ public class Player extends Entity{
 					break;
 				
 			}
-		
+			
+			
 	}
 	
+	public void setPlayerClass(String playerClass) {
+		
+		switch(playerClass) {
+		case "Warrior":
+			maxHP=50;
+			HP=maxHP;
+			minDamage=2;
+			maxDamage=5;
+			shield=0;
+		}
+		
+	}
 	
 }

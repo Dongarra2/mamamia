@@ -60,8 +60,11 @@ public class GamePanel extends JPanel implements Runnable{
 	MapManager mapManager = new MapManager(this);
 	TitleScreen tScreen = new TitleScreen(this);
 	InfoScreen iScreen = new InfoScreen(this);
+	DeadScreen dScreen = new DeadScreen(this);
 	EndScreen eScreen = new EndScreen(this);
 	ContinueScreen cScreen = new ContinueScreen(this);
+	NameScreen nScreen = new NameScreen(this);
+	SelectClassScreen classScreen = new SelectClassScreen(this);
 	UI ui = new UI(this,player);
 	
 	public int arrayLength = 20;
@@ -130,8 +133,11 @@ public class GamePanel extends JPanel implements Runnable{
 					if(gameState=="play") {
 						update();
 					}
-					repaint();
-					delta--;				
+					if(gameState!="nameScreen") {
+						repaint();
+						delta--;
+					}
+									
 			}
 		
 			
@@ -174,7 +180,9 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 		
 		ui.draw(g2);
-		g2.dispose();
+		if(gameState!="nameScreen") {
+			g2.dispose();
+		}
 	}
 	
 

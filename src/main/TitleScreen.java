@@ -45,7 +45,8 @@ public class TitleScreen {
 		bPlay.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				gp.gameState="play";
+				gp.gameState="nameScreen";
+				gp.repaint();
 				bPlay.hovered = false;
 			}
 		
