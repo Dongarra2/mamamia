@@ -96,78 +96,119 @@ public class UI {
 	
 	public void draw(Graphics2D g2) {
 		
-		g2.drawImage(UIBack,0,0,5*gp.tileSize,gp.maxScreenRow*gp.tileSize,null);
 		
-		g2.setFont(arial_25);
-		g2.setColor(Color.white);
+		//////IN GAME DISPLAY///////
+		
+		if(gp.gameState=="play"||gp.gameState=="dead") {
+		
+			g2.drawImage(UIBack,0,0,5*gp.tileSize,gp.maxScreenRow*gp.tileSize,null);
+		
+			g2.setFont(arial_25);
+			g2.setColor(Color.white);
 		
 		
 		//////////CHARACTER//////////
 		
-		g2.drawString("HP : "+player.HP+"/"+player.maxHP, gp.tileSize/4, 9*gp.tileSize/8);
-		g2.drawString("Damage : "+player.minDamage+" - "+player.maxDamage, gp.tileSize/4, 12*gp.tileSize/8);
-		g2.drawString("Score : "+player.score, gp.tileSize/4, 15*gp.tileSize/8);
+			g2.drawString("HP : "+player.HP+"/"+player.maxHP, gp.tileSize/4, 9*gp.tileSize/8);
+			g2.drawString("Damage : "+player.minDamage+" - "+player.maxDamage, gp.tileSize/4, 12*gp.tileSize/8);
+			g2.drawString("Score : "+player.score, gp.tileSize/4, 15*gp.tileSize/8);
 		
 		
 
 		
 		//////////POTIONS////////
 		
-		g2.setFont(arial_20);
+			g2.setFont(arial_20);
 	
 		
 		//potion sprites and amounts
-		if(player.redPotCount>0) {
-			g2.drawImage(RedPotion.redPotion,item3PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion3 : x"+player.redPotCount, item3PosX, potionTextPosY);
-		}
-		else {
-			g2.drawImage(RedPotion.redPotion2,item3PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion3", item3PosX, potionTextPosY);
-		}
-		
-		if(player.greenPotCount>0) {
-			g2.drawImage(GreenPotion.greenPotion,item2PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion2 : x"+player.greenPotCount, item2PosX, potionTextPosY);
+			if(player.redPotCount>0) {
+				g2.drawImage(RedPotion.redPotion,item3PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion3 : x"+player.redPotCount, item3PosX, potionTextPosY);
 			}
-		else {
-			g2.drawImage(GreenPotion.greenPotion2,item2PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion2", item2PosX, potionTextPosY);
+			else {
+				g2.drawImage(RedPotion.redPotion2,item3PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion3", item3PosX, potionTextPosY);
 			}
 		
-		if(player.purplePotCount>0) {
-			g2.drawImage(PurplePotion.purplePotion,item1PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion1 : x"+player.purplePotCount, item1PosX, potionTextPosY);
-		}
-		else {
-			g2.drawImage(PurplePotion.purplePotion2,item1PosX,potionPosY,itemWidth,itemHeight,null);
-			g2.drawString("Potion1", item1PosX, potionTextPosY);
-		}
+			if(player.greenPotCount>0) {
+				g2.drawImage(GreenPotion.greenPotion,item2PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion2 : x"+player.greenPotCount, item2PosX, potionTextPosY);
+			}
+			else {
+				g2.drawImage(GreenPotion.greenPotion2,item2PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion2", item2PosX, potionTextPosY);
+			}
+		
+			if(player.purplePotCount>0) {
+				g2.drawImage(PurplePotion.purplePotion,item1PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion1 : x"+player.purplePotCount, item1PosX, potionTextPosY);
+			}
+			else {
+				g2.drawImage(PurplePotion.purplePotion2,item1PosX,potionPosY,itemWidth,itemHeight,null);
+				g2.drawString("Potion1", item1PosX, potionTextPosY);
+			}
 
 
 		
 		//////////EQUIPMENT////////
 		
-		g2.drawString("Weapon", item1PosX, equipmentTextPosY);
-		g2.drawString("Armor", item2PosX, equipmentTextPosY);
-		g2.drawString("Shield", item3PosX, equipmentTextPosY);
+			g2.drawString("Weapon", item1PosX, equipmentTextPosY);
+			g2.drawString("Armor", item2PosX, equipmentTextPosY);
+			g2.drawString("Shield", item3PosX, equipmentTextPosY);
 
 		
-		g2.drawImage(sword,item1PosX,equipmentPosY,itemWidth,itemHeight,null);
+			g2.drawImage(sword,item1PosX,equipmentPosY,itemWidth,itemHeight,null);
 		
-		if(player.hasShield==true) {
-			g2.drawImage(shield,item3PosX,equipmentPosY,itemWidth,itemHeight,null);
-		}
-		else {
-			g2.drawImage(shield_gray,item3PosX,equipmentPosY,itemWidth,itemHeight,null);			
+			if(player.hasShield==true) {
+				g2.drawImage(shield,item3PosX,equipmentPosY,itemWidth,itemHeight,null);
+			}
+			else {
+				g2.drawImage(shield_gray,item3PosX,equipmentPosY,itemWidth,itemHeight,null);			
+			}
+			
+		
+			if(gp.gameState=="dead") {
+				g2.drawImage(perdu, 0,0,gp.screenWidth,gp.screenHeight,null);
+				g2.setFont(arial_60);
+				g2.drawString("score : "+gp.player.score, gp.tileSize*5, gp.tileSize*8);
+			}
+		
+		/////////
+		
+			g2.setFont(arial_25);
+			g2.drawString("monstres restants : "+gp.mManager.monstersRemaining, gp.tileSize*(gp.maxScreenRow+4), gp.tileSize/2);
+			
+			if(player.monstersKilledThisMap<10 && gp.mManager.monstersRemaining>0) {
+				g2.setFont(arial_25);
+				g2.drawString("Tuez "+player.monstersKilledThisMap+"/10 monstres pour passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+1), gp.tileSize/4);
+			}
+			else {
+				g2.setFont(arial_25);
+				g2.drawString("Vous pouvez passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+2), gp.tileSize/4);
+			}
+			
 		}
 		
-		if(gp.gameState=="dead") {
-			g2.drawImage(perdu, 0,0,gp.screenWidth,gp.screenHeight,null);
-			g2.setFont(arial_60);
-			g2.drawString("score : "+gp.player.score, gp.tileSize*5, gp.tileSize*8);
+		
+		
+		
+		//////TITLE SCREEN DISPLAY///////
+		
+		if(gp.gameState=="titleScreen") {
+			gp.removeAll();
+			gp.tScreen.drawTitleScreen(g2);
+		}
+		
+		//////INFO SCREEN DISPLAY
+		
+		
+		if(gp.gameState=="info") {
+			gp.removeAll();
+			gp.iScreen.drawInfoScreen(g2);
 		}
 		
 		g2.dispose();
+
 	}
 }

@@ -5,12 +5,16 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 
-	public boolean upPressed,downPressed,leftPressed,rightPressed,onePressed,twoPressed,threePressed,PPressed;
-	@Override
-	public void keyTyped(KeyEvent e) {
-		
-		
+	public KeyHandler(GamePanel gp) {
+		this.gp = gp;
 	}
+
+	public boolean upPressed,downPressed,leftPressed,rightPressed,onePressed,twoPressed,threePressed,PPressed,JPressed;
+	GamePanel gp;
+	
+	
+	@Override
+	public void keyTyped(KeyEvent e) {}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -40,8 +44,13 @@ public class KeyHandler implements KeyListener{
 			}
 		if(code == KeyEvent.VK_P) {
 			PPressed=true;
-			}
-
+			}		
+		
+		if(gp.gameState=="titleScreen") {
+			if(code == KeyEvent.VK_J) {
+				gp.gameState="play";
+				}
+		}
 		
 		
 	}
@@ -63,6 +72,21 @@ public class KeyHandler implements KeyListener{
 		if(code == KeyEvent.VK_D) {
 			rightPressed=false;
 		}
+		if(code == KeyEvent.VK_3) {
+			threePressed=false;
+			}
+		if(code == KeyEvent.VK_2) {
+			twoPressed=false;
+			}
+		if(code == KeyEvent.VK_1) {
+			onePressed=false;
+			}
+		if(code == KeyEvent.VK_P) {
+			PPressed=false;
+			}		
+		if(code == KeyEvent.VK_J) {
+			JPressed=false;
+			}
 		
 	}
 

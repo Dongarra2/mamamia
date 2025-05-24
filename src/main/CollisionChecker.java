@@ -5,6 +5,7 @@ import entity.Player;
 public class CollisionChecker {
 	
 	GamePanel gp;
+
 	
 	public CollisionChecker (GamePanel gp) {
 		this.gp = gp;
@@ -53,9 +54,14 @@ public class CollisionChecker {
 		tileNum=gp.tileM.mapTileNum[tileX][tileY];
 		
 		if(tileNum==9) {
-			gp.mapManager.loadMaps(gp.mapManager.chooseMap());
-			player.collisionOn=true;
+			if(gp.mManager.monstersRemaining==0 || player.monstersKilledThisMap>=10) {
+				gp.mapManager.loadMaps(gp.mapManager.chooseMap());
+				player.collisionOn=true;
+			}
 		}
+		
+		
+		
 		else if(gp.tileM.tile[tileNum].collision==true) {
 			player.collisionOn=true;
 		}
@@ -108,9 +114,10 @@ public class CollisionChecker {
 					if(gp.monster[i].HP <= 0) {
 						player.score+=gp.monster[i].score;						
 						player.getLoot(gp.monster[i].loot());
+						player.monstersKilledThisMap++;
 						gp.monster[i].hasTakenDamage=true;	
 						gp.monster[i].damageTaken=realPlayerDmg;
-						gp.monster[i].hasTakenDamage=true;
+						gp.mManager.monstersRemaining--;						
 						gp.monster[i]=null;
 						
 

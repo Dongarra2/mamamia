@@ -105,10 +105,7 @@ public class TileManager {
 			setup(16,"16",true);
 			setup(17,"17",true);
 			setup(18,"18",true);
-			setup(19,"19",true);
-			setup(20,"20",true);
-			setup(21,"21",true);
-			setup(22,"22",true);
+			setup(23,"23",false);
 			
 
 

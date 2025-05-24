@@ -47,10 +47,10 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public int difficulty = 0;
 	
-	public String gameState = "play";
+	public String gameState = "titleScreen";
 	
 	TileManager tileM = new TileManager(this);
-	KeyHandler keyH = new KeyHandler();
+	KeyHandler keyH = new KeyHandler(this);
 	public CollisionChecker cChecker = new CollisionChecker(this);
 	Thread gameThread;
 		
@@ -58,6 +58,9 @@ public class GamePanel extends JPanel implements Runnable{
 	MonsterManager mManager = new MonsterManager(this);
 	EntityManager eManager = new EntityManager(this);
 	MapManager mapManager = new MapManager(this);
+	TitleScreen tScreen = new TitleScreen(this);
+	InfoScreen iScreen = new InfoScreen(this);
+	UI ui = new UI(this,player);
 	
 	public int arrayLength = 20;
 	public Entity monster[] = new Entity[arrayLength];
@@ -65,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	ArrayList<Entity> entityList = new ArrayList<>();
 	
-	UI ui = new UI(this,player);
+	
 	
 	RedPotion redPot = new RedPotion(this,player);
 	GreenPotion greenPot = new GreenPotion(this,player);
@@ -106,31 +109,30 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
 	@Override
-	public void run() {
-
-		double drawInterval = 1000000000/FPS;
-		double delta = 0;
-		long lastTime = System.nanoTime();
-		long currentTime;
+	public void run() {		
 		
-		while(gameThread != null) {
+
 			
-			currentTime = System.nanoTime();
-			delta += (currentTime - lastTime)/drawInterval;
-			lastTime = currentTime;
+			double drawInterval = 1000000000/FPS;
+			double delta = 0;
+			long lastTime = System.nanoTime();
+			long currentTime;
+		
+			while(gameThread != null) {
 			
-			if(delta >= 1) {
-				
-				if(gameState=="play") {
-				update();
-				}
-				repaint();
-//				drawTempScreen();
-//				drawScreen();
-				delta--;
-				
+				currentTime = System.nanoTime();
+				delta += (currentTime - lastTime)/drawInterval;
+				lastTime = currentTime;
+			
+				if(delta >= 1) {
+					if(gameState=="play") {
+						update();
+					}
+					repaint();
+					delta--;				
 			}
 		
+			
 		}
 		
 		
@@ -138,77 +140,36 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		
 		player.update();
-//		try {
-//			TestRequest.insertScore(player.name, player.score);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-//		if(keyH.PPressed==true) {
-//			keyH.PPressed=false;
-//			mapManager.loadMaps(mapManager.chooseMap());
-//		}
-		
 	}
-//	public void drawTempScreen() {
-//		
-//		
-//
-//		tileM.draw(g2);		
-//		entityList.add(player);
-//		
-//		for (int i = 0; i < arrayLength; i++) {
-//			if (monster[i]!=null) {	entityList.add(monster[i]);	}
-//			if (lootCrates[i]!=null) {	entityList.add(lootCrates[i]);	}
-//		}
-//		
-//
-//		for (int i = 0; i < entityList.size(); i++) {
-//			entityList.get(i).draw(g2);
-//		}
-//		
-//		for (int i = 0; i < entityList.size(); i++) {
-//			entityList.remove(i);
-//		}
-//		
-//		ui.draw(g2);
-//
-//	}
-//	public void drawScreen() {
-//		
-//		g2.setColor(new Color(0, 0, 0)); 
-//		g2.fillRect(0, 0, fullScreenWidth, fullScreenHeight);
-//		Graphics g = getGraphics();
-//		g.drawImage(tempScreen, 0, 0, fullScreenWidth, fullScreenHeight,null);
-//		g.dispose();
-//		
-//	}
-	
+
 	
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		
-		tileM.draw(g2);
+		
+		if(gameState=="play") {
+			tileM.draw(g2);
 
 		
-		entityList.add(player);
+			entityList.add(player);
 		
-		for (int i = 0; i < arrayLength; i++) {
-			if (monster[i]!=null) {	entityList.add(monster[i]);	}
-			if (lootCrates[i]!=null) {	entityList.add(lootCrates[i]);	}
+			for (int i = 0; i < arrayLength; i++) {
+				if (monster[i]!=null) {	entityList.add(monster[i]);	}
+				if (lootCrates[i]!=null) {	entityList.add(lootCrates[i]);	}
+			}
+		
+			
+			for (int i = 0; i < entityList.size(); i++) {
+				entityList.get(i).draw(g2);
+			}
+		
+			for (int i = 0; i < entityList.size(); i++) {
+				entityList.remove(i);
+			}		
+			
 		}
-		
-
-		for (int i = 0; i < entityList.size(); i++) {
-			entityList.get(i).draw(g2);
-		}
-		
-		for (int i = 0; i < entityList.size(); i++) {
-			entityList.remove(i);
-		}		
 		
 		ui.draw(g2);
 		g2.dispose();

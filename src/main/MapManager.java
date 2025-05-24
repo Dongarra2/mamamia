@@ -59,7 +59,8 @@ public class MapManager {
 		
 		if (mapNum!=0) {
 			
-
+			
+			gp.player.monstersKilledThisMap=0;
 			gp.tileM.resetMap();
 			gp.mManager.resetMonsters();
 			gp.eManager.resetEntity();
@@ -69,6 +70,7 @@ public class MapManager {
 			gp.eManager.loadMapEntity("/maps/0"+mapNum+"entityMap.txt");
 			gp.player.worldX=1*gp.tileSize;
 			gp.player.worldY=1*gp.tileSize;
+			gp.mManager.monstersRemaining();
 			gp.difficulty++;
 		}
 	}

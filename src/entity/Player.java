@@ -17,6 +17,7 @@ public class Player extends Entity{
 	public boolean hasGreenPot,hasPurplePot,hasShield;
 	public int redPotCount,greenPotCount,purplePotCount,purplePotDuration,greenPotDuration,purplePotRemaining,greenPotRemaining;
 	public String playerName;
+	public int monstersKilledThisMap;
 
 
 
@@ -55,6 +56,8 @@ public class Player extends Entity{
 		greenPotDuration = 2;
 		purplePotRemaining = 0;
 		greenPotRemaining = 0;
+		
+		monstersKilledThisMap = 0;
 		
 		name = "default";
 		
@@ -215,48 +218,4 @@ public class Player extends Entity{
 	}
 	
 	
-	
-//	public void draw(Graphics2D g2) {
-//		
-//		BufferedImage image = null;
-//		
-//		if (spriteNumber==true) {
-//			
-//			switch(direction) {
-//			case "up":
-//				image = up1;
-//				break;
-//			case "down":
-//				image = down1;
-//				break;
-//			case "left":
-//				image = left1;
-//				break;
-//			case "right":
-//				image = right1;
-//				break;
-//			}
-//			
-//		}
-//		else {
-//			switch(direction) {
-//			case "up":
-//				image = up2;
-//				break;
-//			case "down":
-//				image = down2;
-//				break;
-//			case "left":
-//				image = left2;
-//				break;
-//			case "right":
-//				image = right2;
-//				break;
-//			}
-//		}
-//		
-//		
-//		g2.drawImage(image, screenX, screenY, null);
-//	}
-//	
 }

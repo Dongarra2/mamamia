@@ -10,13 +10,12 @@ import main.GamePanel;
 public class MonsterManager {
 	
 	GamePanel gp;
+	public int monstersRemaining;
 	
 	
 	public MonsterManager(GamePanel gp) {
 		this.gp=gp;
-
-
-				
+		monstersRemaining = 0;	
 	}
 	
 	private void setSkel(int index, int X, int Y) {
@@ -103,6 +102,15 @@ public class MonsterManager {
 		
 		for (int i = 0; i < gp.monster.length; i++) {
 			gp.monster[i]=null;
+		}
+	}
+	
+	public void monstersRemaining() {
+		monstersRemaining=0;
+		for(int i=0; i<gp.arrayLength;i++) {
+			if(gp.monster[i]!=null) {
+				monstersRemaining++;
+			}
 		}
 	}
 	
