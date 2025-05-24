@@ -6,12 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 
 public class TitleScreen {
 
@@ -19,9 +16,8 @@ public class TitleScreen {
 	Font arial_20;
 	Font arial_25;
 	Font arial_60;
-	boolean infoHover,exitHover,playHover = false;
 	BufferedImage infoButton,infoButtonHover,exitButton,exitButtonHover,playButton,playButtonHover,Screen;
-	JButton bExit,bPlay,bInfo;
+	MenuButton bExit,bPlay,bInfo;
 	
 	public TitleScreen(GamePanel gp) {
 		this.gp=gp;
@@ -32,80 +28,42 @@ public class TitleScreen {
 		
 		///BUTTONS SETUP////
 		
-		bExit = new JButton();		
-		bExit.setOpaque(false);
-		bExit.setContentAreaFilled(false);
-		bExit.setBorderPainted(false);
-		bExit.setVisible(true);
-		bExit.setBounds(gp.tileSize*6, gp.tileSize*7, gp.tileSize*4, gp.tileSize);	
 		
-					
-		bExit.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e) {
-				exitHover = true;
-			    }
-			public void mouseExited(MouseEvent e) {
-				exitHover = false;
-			    }
-		});
+		bExit = new MenuButton(gp.tileSize*6, gp.tileSize*7, gp.tileSize*4, gp.tileSize);
+		
 		bExit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
-			
-		});
 		
-		bPlay = new JButton();		
-		bPlay.setOpaque(false);
-		bPlay.setContentAreaFilled(false);
-		bPlay.setBorderPainted(false);
-		bPlay.setVisible(true);
-		bPlay.setBounds(gp.tileSize*6, gp.tileSize*3, gp.tileSize*4, gp.tileSize);	
-		
-		bPlay.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e) {
-				playHover = true;
-			    }
-			public void mouseExited(MouseEvent e) {
-				playHover = false;
-			    }
 		});
+
+
+		bPlay = new MenuButton(gp.tileSize*6, gp.tileSize*3, gp.tileSize*4, gp.tileSize);
 		
 		bPlay.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				gp.gameState="play";
-				bPlay.setVisible(false);
-				playHover = false;
+				bPlay.hovered = false;
 			}
+		
 		});
 		
-		bInfo = new JButton();		
-		bInfo.setOpaque(false);
-		bInfo.setContentAreaFilled(false);
-		bInfo.setBorderPainted(false);
-		bInfo.setVisible(true);
-		bInfo.setBounds(gp.tileSize*6, gp.tileSize*5, gp.tileSize*4, gp.tileSize);	
-		
-					
-		bInfo.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e) {
-				infoHover = true;
-			    }
-			public void mouseExited(MouseEvent e) {
-				infoHover = false;
-			    }
-		});
+		bInfo = new MenuButton(gp.tileSize*6, gp.tileSize*5, gp.tileSize*4, gp.tileSize);
 		
 		bInfo.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				gp.gameState="info";
-				infoHover = false;
+				bInfo.hovered = false;
 			}
-			
+		
 		});
 		
+		
+					
 		try {
 			Screen = ImageIO.read(getClass().getResourceAsStream("/titleScreen/titleScreen.png"));
 			playButton = ImageIO.read(getClass().getResourceAsStream("/titleScreen/playButton.png"));
@@ -130,26 +88,26 @@ public class TitleScreen {
 			g2.drawString("TITRE", 3*gp.tileSize*gp.maxScreenRow/4, gp.tileSize/2);
 			
 			
-			if(exitHover==false) {
-				g2.drawImage(exitButton, gp.tileSize*6, gp.tileSize*7, gp.tileSize*4, gp.tileSize, null);
+			if(bExit.hovered==false) {
+				g2.drawImage(exitButton, bExit.posX, bExit.posY, bExit.width, bExit.height, null);
 			}
 			else {
-				g2.drawImage(exitButtonHover, gp.tileSize*6, gp.tileSize*7, gp.tileSize*4, gp.tileSize, null);
+				g2.drawImage(exitButtonHover, bExit.posX, bExit.posY, bExit.width, bExit.height, null);
 			}
 						
-			if(playHover==false) {
-				g2.drawImage(playButton, gp.tileSize*6, gp.tileSize*3, gp.tileSize*4, gp.tileSize, null);
+			if(bPlay.hovered==false) {
+				g2.drawImage(playButton, bPlay.posX, bPlay.posY, bPlay.width, bPlay.height, null);
 			}
 			else {
-				g2.drawImage(playButtonHover, gp.tileSize*6, gp.tileSize*3, gp.tileSize*4, gp.tileSize, null);
+				g2.drawImage(playButtonHover, bPlay.posX, bPlay.posY, bPlay.width, bPlay.height, null);
 			}
 			
 			
-			if(infoHover==false) {
-				g2.drawImage(infoButton, gp.tileSize*6, gp.tileSize*5, gp.tileSize*4, gp.tileSize, null);
+			if(bInfo.hovered==false) {
+				g2.drawImage(infoButton, bInfo.posX, bInfo.posY, bInfo.width, bInfo.height, null);
 			}
 			else {
-				g2.drawImage(infoButtonHover, gp.tileSize*6, gp.tileSize*5, gp.tileSize*4, gp.tileSize, null);
+				g2.drawImage(infoButtonHover, bInfo.posX, bInfo.posY, bInfo.width, bInfo.height, null);
 			}
 						
 			gp.add(bPlay);

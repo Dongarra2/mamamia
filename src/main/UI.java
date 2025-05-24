@@ -99,7 +99,8 @@ public class UI {
 		
 		//////IN GAME DISPLAY///////
 		
-		if(gp.gameState=="play"||gp.gameState=="dead") {
+		if(gp.gameState=="play"||gp.gameState=="dead"||gp.gameState=="continue") {
+			gp.removeAll();
 		
 			g2.drawImage(UIBack,0,0,5*gp.tileSize,gp.maxScreenRow*gp.tileSize,null);
 		
@@ -169,24 +170,28 @@ public class UI {
 			
 		
 			if(gp.gameState=="dead") {
-				g2.drawImage(perdu, 0,0,gp.screenWidth,gp.screenHeight,null);
-				g2.setFont(arial_60);
-				g2.drawString("score : "+gp.player.score, gp.tileSize*5, gp.tileSize*8);
+				gp.eScreen.drawEndScreen(g2);
+			}
+			if(gp.gameState=="continue") {
+				gp.cScreen.drawContinueScreen(g2);
 			}
 		
 		/////////
 		
-			g2.setFont(arial_25);
-			g2.drawString("monstres restants : "+gp.mManager.monstersRemaining, gp.tileSize*(gp.maxScreenRow+4), gp.tileSize/2);
+			if(gp.gameState=="play") {
+				g2.setFont(arial_25);
+				g2.drawString("monstres restants : "+gp.mManager.monstersRemaining, gp.tileSize*(gp.maxScreenRow+4), gp.tileSize/2);
+				
+				if(player.monstersKilledThisMap<10 && gp.mManager.monstersRemaining>0) {
+					g2.setFont(arial_25);
+					g2.drawString("Tuez "+player.monstersKilledThisMap+"/10 monstres pour passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+1), gp.tileSize/4);
+				}
+				else {
+					g2.setFont(arial_25);
+					g2.drawString("Vous pouvez passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+2), gp.tileSize/4);
+				}
+			}
 			
-			if(player.monstersKilledThisMap<10 && gp.mManager.monstersRemaining>0) {
-				g2.setFont(arial_25);
-				g2.drawString("Tuez "+player.monstersKilledThisMap+"/10 monstres pour passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+1), gp.tileSize/4);
-			}
-			else {
-				g2.setFont(arial_25);
-				g2.drawString("Vous pouvez passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+2), gp.tileSize/4);
-			}
 			
 		}
 		

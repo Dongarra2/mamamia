@@ -60,6 +60,8 @@ public class GamePanel extends JPanel implements Runnable{
 	MapManager mapManager = new MapManager(this);
 	TitleScreen tScreen = new TitleScreen(this);
 	InfoScreen iScreen = new InfoScreen(this);
+	EndScreen eScreen = new EndScreen(this);
+	ContinueScreen cScreen = new ContinueScreen(this);
 	UI ui = new UI(this,player);
 	
 	public int arrayLength = 20;
@@ -149,7 +151,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		
 		
-		if(gameState=="play") {
+		if(gameState=="play"||gameState=="dead"||gameState=="continue") {
 			tileM.draw(g2);
 
 		
