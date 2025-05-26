@@ -88,7 +88,7 @@ public class TileManager {
 			
 			setup(0,"grass",false);
 			setup(1,"Stone_Wall",true);
-			setup(2,"water",true);
+			setup(2,"Water",true);
 			setup(3,"earth",false);
 			setup(4,"Stone_Wall",true);
 			setup(5,"sand",false);

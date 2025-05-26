@@ -6,8 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
+
+import accesBDD.BDD;
+import accesBDD.TestRequest;
 
 public class ContinueScreen {
 	
@@ -49,7 +53,15 @@ public class ContinueScreen {
 		bEnd.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
 				
-				//Send score to BDD				
+				//Send score to BDD	
+				
+				try {
+					TestRequest.insertScore(gp.player.name, gp.player.score);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				gp.gameState="endScreen";
 				bEnd.hovered = false;
 			}		
@@ -66,13 +78,13 @@ public class ContinueScreen {
 		g2.setFont(arial_60);
 		g2.drawString("score : "+gp.player.score, 13*gp.tileSize/2, gp.tileSize*8);
 		
-		if(bNext.hovered==false) {
+		if(!bNext.hovered) {
 			g2.drawImage(nextButton, bNext.posX, bNext.posY, bNext.width, bNext.height, null);
 		}
 		else {
 			g2.drawImage(nextButtonHover, bNext.posX, bNext.posY, bNext.width, bNext.height, null);
 		}
-		if(bEnd.hovered==false) {
+		if(!bEnd.hovered) {
 			g2.drawImage(endButton, bEnd.posX, bEnd.posY, bEnd.width, bEnd.height, null);
 		}
 		else {

@@ -20,6 +20,7 @@ public class TitleScreen {
 	MenuButton bExit,bPlay,bInfo;
 	
 	public TitleScreen(GamePanel gp) {
+		
 		this.gp=gp;
 		arial_20=new Font("Arial", Font.PLAIN, 20/6*gp.scale);
 		arial_25=new Font("Arial", Font.PLAIN, 25/6*gp.scale);
@@ -79,6 +80,7 @@ public class TitleScreen {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void drawTitleScreen(Graphics2D g2) {
@@ -89,14 +91,14 @@ public class TitleScreen {
 			g2.drawString("TITRE", 3*gp.tileSize*gp.maxScreenRow/4, gp.tileSize/2);
 			
 			
-			if(bExit.hovered==false) {
+			if(!bExit.hovered) {
 				g2.drawImage(exitButton, bExit.posX, bExit.posY, bExit.width, bExit.height, null);
 			}
 			else {
 				g2.drawImage(exitButtonHover, bExit.posX, bExit.posY, bExit.width, bExit.height, null);
 			}
 						
-			if(bPlay.hovered==false) {
+			if(!bPlay.hovered) {
 				g2.drawImage(playButton, bPlay.posX, bPlay.posY, bPlay.width, bPlay.height, null);
 			}
 			else {
@@ -104,7 +106,7 @@ public class TitleScreen {
 			}
 			
 			
-			if(bInfo.hovered==false) {
+			if(!bInfo.hovered) {
 				g2.drawImage(infoButton, bInfo.posX, bInfo.posY, bInfo.width, bInfo.height, null);
 			}
 			else {

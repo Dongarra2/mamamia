@@ -12,15 +12,18 @@ public class BDD {
                 String url ="jdbc:mysql://mysql02.pedagogie.enit.fr/****roguelite";
                 String login = "student";
                 String password ="Enit@65";
+                
                 try {
                         Class.forName("com.mysql.jdbc.Driver");
                         cn = DriverManager.getConnection(url,login,password);
+                        System.out.println("Connexion réussie");
                 } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                 } catch (SQLException e) {
                         e.printStackTrace();
                 }
         }
+        
         public static void fermerConnexion() {
                 try {
                         cn.close();

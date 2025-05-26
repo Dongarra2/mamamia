@@ -84,7 +84,7 @@ public class SelectClassScreen {
 		
 		g2.drawImage(mask, 0, 0, gp.screenWidth, gp.screenHeight,null);
 		
-		if(bClass1.hovered==false) {
+		if(!bClass1.hovered) {
 			g2.drawImage(class1, bClass1.posX, bClass1.posY, bClass1.width, bClass1.height, null);
 		}
 		else {

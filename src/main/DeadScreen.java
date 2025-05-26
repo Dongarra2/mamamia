@@ -49,7 +49,7 @@ public class DeadScreen {
 		g2.setFont(arial_60);
 		g2.drawString("score : "+gp.player.score, 13*gp.tileSize/2, gp.tileSize*8);
 		
-		if(bMenu.hovered==false) {
+		if(!bMenu.hovered) {
 			g2.drawImage(menuButton, bMenu.posX, bMenu.posY, bMenu.width, bMenu.height, null);
 		}
 		else {

@@ -78,7 +78,7 @@ public class NameScreen {
 		
 		g2.drawImage(Screen, 0, 0, gp.screenWidth, gp.screenHeight,null);
 		
-		if(bPlay.hovered==false) {
+		if(!bPlay.hovered) {
 			
 			g2.drawImage(playButton, bPlay.posX, bPlay.posY, bPlay.width, bPlay.height, null);
 		}
@@ -87,7 +87,7 @@ public class NameScreen {
 			gp.repaint();
 		}
 		
-		if(bBack.hovered==false) {
+		if(!bBack.hovered) {
 			
 			g2.drawImage(backButton, bBack.posX, bBack.posY, bBack.width, bBack.height, null);
 		}
