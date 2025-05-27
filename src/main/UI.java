@@ -180,9 +180,9 @@ public class UI {
 				g2.setFont(arial_25);
 				g2.drawString("monstres restants : "+gp.mManager.monstersRemaining, gp.tileSize*(gp.maxScreenRow+4), gp.tileSize/2);
 				
-				if(player.monstersKilledThisMap<10 && gp.mManager.monstersRemaining>0) {
+				if(player.monstersKilledThisMap<3 && gp.mManager.monstersRemaining>0) {
 					g2.setFont(arial_25);
-					g2.drawString("Tuez "+player.monstersKilledThisMap+"/10 monstres pour passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+1), gp.tileSize/4);
+					g2.drawString("Tuez "+player.monstersKilledThisMap+"/3 monstres pour passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+1), gp.tileSize/4);
 				}
 				else {
 					g2.setFont(arial_25);

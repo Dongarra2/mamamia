@@ -54,7 +54,7 @@ public class CollisionChecker {
 		tileNum=gp.tileM.mapTileNum[tileX][tileY];
 		
 		if(tileNum==9) {
-			if(gp.mManager.monstersRemaining==0 || player.monstersKilledThisMap>=10) {
+			if(gp.mManager.monstersRemaining==0 || player.monstersKilledThisMap>=3) {
 				gp.gameState="continue";
 				player.collisionOn=true;
 			}

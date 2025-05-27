@@ -17,7 +17,7 @@ public class MapManager {
 		this.gp = gp;
 		
 		
-		maxNumMap = 3;
+		maxNumMap = 2;
 		remainingMaps=maxNumMap;
 		maps = new int[maxNumMap];
 

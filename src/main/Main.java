@@ -2,6 +2,8 @@ package main;
 
 import javax.swing.JFrame;
 
+import accesBDD.BDD;
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -21,6 +23,7 @@ public class Main {
 		
 		gamePanel.setupGame();
 		gamePanel.startGameThread();
+
 		
 
 	}

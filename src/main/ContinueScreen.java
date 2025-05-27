@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import javax.imageio.ImageIO;
 
 import accesBDD.BDD;
-import accesBDD.TestRequest;
 
 public class ContinueScreen {
 	
@@ -56,7 +55,7 @@ public class ContinueScreen {
 				//Send score to BDD	
 				
 				try {
-					TestRequest.insertScore(gp.player.name, gp.player.score);
+					BDD.insertScore(gp.player.name, gp.player.score);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

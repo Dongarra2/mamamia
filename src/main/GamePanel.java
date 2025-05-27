@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import accesBDD.BDD;
 import entity.Entity;
 import entity.EntityManager;
 import entity.GreenPotion;
@@ -101,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable{
 //		tileM.loadMap("/maps/01map.txt");
 		
 		mapManager.loadMaps(mapManager.chooseMap());
-		BDD.OuvrirConnexion();
+//		BDD.OuvrirConnexion();
 		
 		
 //		tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
