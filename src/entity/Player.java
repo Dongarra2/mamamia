@@ -59,8 +59,7 @@ public class Player extends Entity{
 		
 		monstersKilledThisMap = 0;
 		
-		name = "default";
-		
+				
 //		maxHP=50;
 //		HP=maxHP;
 //		minDamage=2;
@@ -219,6 +218,8 @@ public class Player extends Entity{
 	}
 	
 	public void setPlayerClass(String playerClass) {
+		
+		setDefaultValues();
 		
 		switch(playerClass) {
 		case "Warrior":

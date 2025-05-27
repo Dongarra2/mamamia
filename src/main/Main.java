@@ -2,7 +2,6 @@ package main;
 
 import javax.swing.JFrame;
 
-import accesBDD.BDD;
 
 public class Main {
 	

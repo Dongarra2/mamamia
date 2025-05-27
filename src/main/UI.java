@@ -162,7 +162,7 @@ public class UI {
 				g2.drawImage(shield,item3PosX,equipmentPosY,itemWidth,itemHeight,null);
 			}
 			else {
-				g2.drawImage(shield_gray,item3PosX,equipmentPosY,itemWidth,itemHeight,null);			
+				g2.drawImage(shield_gray,item3PosX,equipmentPosY,itemWidth,itemHeight,null);
 			}
 			
 		
@@ -186,7 +186,7 @@ public class UI {
 				}
 				else {
 					g2.setFont(arial_25);
-					g2.drawString("Vous pouvez passer à la carte suivante", gp.tileSize*(gp.maxScreenRow+2), gp.tileSize/4);
+					g2.drawString("Vous pouvez passer à la carte su6ivante", gp.tileSize*(gp.maxScreenRow+2), gp.tileSize/4);
 				}
 			}
 			
